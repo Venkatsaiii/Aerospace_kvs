@@ -1,0 +1,50 @@
+<% layout('layouts/mainLayout') %>
+<form action="/new" method="post" novalidate class="validated-form">
+
+  <div>
+    <label class="form-label" for="sellername">Seller name</label>
+            <input class="form-control" type="text" id="sellername" name="sellername" required>
+  </div>
+  <div>
+    <label class="form-label" for="pnenum">Contact number</label>
+            <input class="form-control" type="Number" id="pnenum" name="pnenum" required>
+  </div>
+  <div >
+    <label class="form-label" for="image">Image Url</label>
+          <input class="form-control" type="text" id="image" name="image" required>
+  </div>
+  <div>
+    <label class="form-label" for="name">Title</label>
+            <input class="form-control" type="text" id="name" name="name" required>
+  </div>
+  <div>
+  <label class="form-label" for="price">Campground Price</label>
+          <div class="input-group">
+              <span class="input-group-text" id="price-label">$</span>
+              <input type="Number" class="form-control" id="price" placeholder="0.00" aria-label="price"
+                  aria-describedby="price-label" name="price" required>
+          </div>
+          </div>
+          <button class="btn btn-primary mt-2">submit</button>
+  </form>
+<script >
+  (function () {
+  'use strict'
+
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  const forms = document.querySelectorAll('.validated-form')
+
+  // Loop over them and prevent submission
+  Array.from(forms)
+    .forEach(function (form) {
+      form.addEventListener('submit', function (event) {
+        if (!form.checkValidity()) {
+          event.preventDefault()
+          event.stopPropagation()
+        }
+
+        form.classList.add('was-validated')
+      }, false)
+    })
+})()
+</script>
